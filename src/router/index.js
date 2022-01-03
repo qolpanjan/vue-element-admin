@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-
 import Layout from '@/layout'
 
 export const constantRoutes = [
@@ -53,18 +52,27 @@ export const constantRoutes = [
   }
 ]
 
-
 export const asyncRoutes = [
   {
-    path:'/book',
+    path: '/book',
     component: Layout,
-    meta: { title: '图书管理系统', icon: 'doucumentation'},
+    meta: { title: '病案申请管理', icon: 'clipboard' },
     children: [
       {
-         path: '/book/new',
-         component:()=> import('@/views/book/create'),
-         meta: { title:'新增图书', icon: 'education' },
-         name: '新增图书'
+        path: '/order/index',
+        component: () => import('@/views/order/index'),
+        meta: { title: '全部订单', icon: 'chart' },
+        name: '全部订单'
+      }, {
+        path: '/order/new',
+        component: () => import('@/views/order/NewOrder'),
+        meta: { title: '新订单', icon: 'guide' },
+        name: '新预约'
+      }, {
+        path: '/order/done',
+        component: () => import('@/views/order/DoneOrder'),
+        meta: { title: '已处理', icon: 'email' },
+        name: '已处理订单'
       }
     ]
   },

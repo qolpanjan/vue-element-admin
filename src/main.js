@@ -13,6 +13,7 @@ import '@/styles/index.scss' // global css
 import App from './App'
 import store from './store'
 import router from './router'
+import Moment from 'moment'
 
 import './icons' // icon
 import './permission' // permission control
@@ -20,11 +21,13 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 
-
-
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
+  size: Cookies.get('size') || 'medium' // set element-ui default size
   // locale: ugCN // 如果使用中文，无需设置，请删除
+})
+
+Vue.filter('formatDate', function(value) {
+  return Moment(value).format('YYYY-MM-DD HH:mm:ss')
 })
 
 // register global utility filters
